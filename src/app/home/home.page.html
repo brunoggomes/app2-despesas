@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary ion-text-center">
+    <ion-title class="principal">
+      Nova Despesa
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+
+  <div id="container">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Motivo da despesa</ion-label>
+        <ion-input type="text" [(ngModel)]="despesa.motivo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Valor gasto</ion-label>
+        <ion-input type="number" [(ngModel)]="despesa.valor"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select placeholder="Tipo da despesa" class="custom-options" [(ngModel)]="despesa.tipo">
+          <ion-select-option *ngFor="let tipo of tipos" [value]="tipo">{{tipo}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Data</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione a data" [(ngModel)]="despesa.data">
+        </ion-datetime>
+      </ion-item>
+    </ion-list>
+    <ion-button fill="outline" color="danger">limpar</ion-button>
+    <ion-button fill="solid" color="primary" (click)="adicionar()">Adicionar</ion-button>
+  </div>
+</ion-content>
