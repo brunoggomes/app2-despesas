@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'exibe-despesas',
+    loadChildren: () => import('./exibe-despesas/exibe-despesas.module').then( m => m.ExibeDespesasPageModule)
+  },
 ];
 
 @NgModule({

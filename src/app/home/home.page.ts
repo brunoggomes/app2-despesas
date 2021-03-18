@@ -1,3 +1,4 @@
+import { DespesaService } from './../model/despesa.service';
 import { TipoDespesa } from './../model/tipodespesa';
 import { Despesa } from './../model/despesa';
 import { Component } from '@angular/core';
@@ -8,13 +9,16 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  //Faz a ligação com os elementos de entrada do formulário. 
   despesa: Despesa;
-  tipos: any[];
+  tipos: string[];
+  adicionado: boolean;
 
-  constructor() {
+  constructor(private ds: DespesaService) {
     let data = new Date();
     this.despesa = new Despesa('', undefined, TipoDespesa.OUTRA, data.toISOString());
     this.tipos = Object.values(TipoDespesa);
+    this.adicionado = false;
   }
 
   adicionar() {
@@ -23,6 +27,6 @@ export class HomePage {
       this.despesa.valor,
       this.despesa.tipo,
       this.despesa.data);
-    console.log(novaDespesa);
+    this.adicionado = this.ds.adicionar(novaDespesa);
   }
 }

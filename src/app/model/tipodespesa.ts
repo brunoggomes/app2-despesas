@@ -1,5 +1,5 @@
 export enum TipoDespesa {
-    ALIMENTACAO = "Alimentacao",
+    ALIMENTACAO = "Alimentação",
     EDUCACAO = "Educação",
     ESPORTE = "Esporte",
     LAR = "Lar",
